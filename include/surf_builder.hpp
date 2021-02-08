@@ -153,8 +153,11 @@ private:
     level_t sparse_start_level_;
 
     // LOUDS-Sparse bit/byte vectors
+    // labels in each level
     std::vector<std::vector<label_t> > labels_;
+    // if this node has children
     std::vector<std::vector<word_t> > child_indicator_bits_;
+    // if it is the first child-node of its parent
     std::vector<std::vector<word_t> > louds_bits_;
 
     // LOUDS-Dense bit vectors
@@ -165,7 +168,9 @@ private:
     SuffixType suffix_type_;
     level_t hash_suffix_len_;
     level_t real_suffix_len_;
+    // suffixes in each level
     std::vector<std::vector<word_t> > suffixes_;
+    // the num of suffixes in each level
     std::vector<position_t> suffix_counts_;
 
     // auxiliary per level bookkeeping vectors
@@ -219,6 +224,8 @@ level_t SuRFBuilder::insertKeyBytesToTrieUntilUnique(const std::string& key, con
     // shoud be in an the node as the previous key.
     insertKeyByte(key[level], level, is_start_of_node, is_term);
     level++;
+
+    // FIXME: 这里是如果后一个的长度比这个小或者不一样，那么这里就认为也就不需要接着往下添加node了，已经能够辨别了，不过对于陌生的数据可能需要改进，因为可能会影响FPR。
     if (level > next_key.length()
 	|| !isSameKey(key.substr(0, level), next_key.substr(0, level)))
 	return level;
@@ -316,6 +323,7 @@ inline void SuRFBuilder::storeSuffix(const level_t level, const word_t suffix) {
     suffix_counts_[level-1]++;
 }
 
+// FIXME: 也许可以根据data skew的情况来选择合适的sparse_dense_ratio_
 inline void SuRFBuilder::determineCutoffLevel() {
     level_t cutoff_level = 0;
     uint64_t dense_mem = computeDenseMem(cutoff_level);

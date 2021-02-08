@@ -1,0 +1,65 @@
+Bloom Filter, random int, point queries
+Build time = 16.2191
+Throughput = 4.39573
+positives = 5546738
+true positives = 5511512
+false positives = 35226
+true negatives = 4453263
+count = 0
+False Positive Rate = 0.00784808
+Memory = 62500001
+
+SuRF, random int, point queries
+Build time = 4.37121
+Throughput = 2.55374
+positives = 5698139
+true positives = 5511512
+false positives = 186627
+true negatives = 4301862
+count = 0
+False Positive Rate = 0.041579
+Memory = 66377919
+
+SuRFHash, 4-bit suffixes, random int, point queries
+Build time = 4.8619
+Throughput = 2.057
+positives = 5518823
+true positives = 5511512
+false positives = 7311
+true negatives = 4481178
+count = 0
+False Positive Rate = 0.00162883
+Memory = 91377919
+
+SuRFReal, 4-bit suffixes, random int, point queries
+Build time = 5.14388
+Throughput = 2.12485
+positives = 5536125
+true positives = 5511512
+false positives = 24613
+true negatives = 4463876
+count = 0
+False Positive Rate = 0.00548358
+Memory = 91377919
+
+SuRFMixed, 2-bit hash suffixes and 2-bit real suffixes, random int, point queries
+Build time = 5.12683
+Throughput = 1.83339
+positives = 6291385
+true positives = 6255754
+false positives = 35631
+true negatives = 3708616
+count = 0
+False Positive Rate = 0.0095162
+Memory = 91377919
+
+SuRFReal, 4-bit suffixes, random int, range queries
+Build time = 4.56201
+Throughput = 1.57714
+positives = 7008356
+true positives = 6998819
+false positives = 9537
+true negatives = 2991645
+count = 0
+False Positive Rate = 0.00317775
+Memory = 91377919

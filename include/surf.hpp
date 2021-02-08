@@ -96,6 +96,7 @@ public:
     level_t getHeight() const;
     level_t getSparseStartLevel() const;
 
+    // FIXME: 没有对surf_builder实施serialize/deSerialize的操作，是因为这里作者默认如果存到sst之后，整个filter的结构就不会发生改变。
     char* serialize() const {
 	uint64_t size = serializedSize();
 	char* data = new char[size];
